@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>注册页面</title>
+		<title>尚硅谷会员注册页面</title>
+		<!--写base标签，永远固定相对路径跳转的结果-->
 		<base href="http://localhost:8080/book/">
+
 		<link type="text/css" rel="stylesheet" href="static/css/style.css" >
 		<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
@@ -77,7 +79,7 @@
 					}
 
 					// 去掉错误信息
-					$("span.errorMsg").text("");
+					//$("span.errorMsg").text("")
 
 				});
 
@@ -111,30 +113,34 @@
 								<span class="errorMsg"></span>
 							</div>
 							<div class="form">
-								<form action="registServlet" method="post">
+								<form action="http://localhost:8080/book/registServlet" method="post">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
+										   value="wzg168"
 										   autocomplete="off" tabindex="1" name="username" id="username" />
 									<br />
 									<br />
 									<label>用户密码：</label>
 									<input class="itxt" type="password" placeholder="请输入密码"
+										   value="123456"
 										   autocomplete="off" tabindex="1" name="password" id="password" />
 									<br />
 									<br />
 									<label>确认密码：</label>
 									<input class="itxt" type="password" placeholder="确认密码"
+										   value="123456"
 										   autocomplete="off" tabindex="1" name="repwd" id="repwd" />
 									<br />
 									<br />
 									<label>电子邮件：</label>
 									<input class="itxt" type="text" placeholder="请输入邮箱地址"
+										   value="wzg168@qq.com"
 										   autocomplete="off" tabindex="1" name="email" id="email" />
 									<br />
 									<br />
 									<label>验证码：</label>
-									<input class="itxt" type="text" name="code" style="width: 150px;" id="code"/>
-									<img alt="" src="../../static/img/code.bmp" style="float: right; margin-right: 40px">
+									<input class="itxt" type="text" name="code" style="width: 150px;" id="code" value="abcde"/>
+									<img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
 									<br />
 									<br />
 									<input type="submit" value="注册" id="sub_btn" />

@@ -20,6 +20,7 @@ public class RegistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.获取请求参数
+
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
