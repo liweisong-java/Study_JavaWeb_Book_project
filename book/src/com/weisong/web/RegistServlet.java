@@ -47,6 +47,8 @@ public class RegistServlet extends HttpServlet {
             //不正确
             req.getRequestDispatcher("/pages/user/regist.html").forward(req,resp);
                 //跳回注册页面
+
         }
+
     }
 }
