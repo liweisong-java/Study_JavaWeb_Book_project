@@ -35,7 +35,8 @@
 								<form action="loginServlet" method="post">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
-										   autocomplete="off" tabindex="1" name="username" />
+										   autocomplete="off" tabindex="1" name="username"
+										   value=""<%=request.getAttribute("username")==null?"":request.getAttribute("username")%>"/>
 									<br />
 									<br />
 									<label>用户密码：</label>
