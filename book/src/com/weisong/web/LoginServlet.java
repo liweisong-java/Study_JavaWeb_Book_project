@@ -30,13 +30,15 @@ public class LoginServlet extends HttpServlet {
         //3.根据login()方法返回结果判断登录是否成功
         //如果等于null，说明登陆失败
         if (loginUser == null){
-            //失败
+            //把错误信息，和回显的表单项信息，保存到Request域中
+            req.setAttribute("msg","用户名或密码错误");
+            req.setAttribute("username",username);
             //跳回登陆页面
-            req.getRequestDispatcher("/pages/user/login.html").forward(req,resp);
+            req.getRequestDispatcher("/pages/user/login.jsp").forward(req,resp);
         }else{
             //成功
-            //跳到成功页面 login_success.html
-            req.getRequestDispatcher("/pages/user/login_success.html").forward(req,resp);
+            //跳到成功页面 login_success.jsp
+            req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req,resp);
         }
 
 
