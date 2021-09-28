@@ -5,6 +5,7 @@ import com.weisong.service.UserService;
 import com.weisong.service.impl.UserServiceImpl;
 import com.weisong.test.UserServletTest;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ import java.lang.reflect.Method;
  * @author 李伟松
  * @create 2021-09-27-22:21
  */
-public class UserServlet extends HttpServlet {
+public class UserServlet extends BaseServlet {
 
     private UserService userService = new UserServiceImpl();
 
@@ -99,17 +100,5 @@ public class UserServlet extends HttpServlet {
 
         }
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        try {
-            //通过action业务鉴别字符串，获取相应的业务方法反射对象
-            Method method = this.getClass().getDeclaredMethod(action,HttpServletRequest.class,HttpServletResponse.class);
-//            System.out.println(method);
-            //通过目标业务方法
-            method.invoke(this,req,resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }
