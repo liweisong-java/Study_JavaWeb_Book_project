@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  */
 public class Book {
     private Integer id;
-    private String mame;
+    private String name;
     private String author;
     private BigDecimal price;
     private Integer sales;
@@ -18,15 +18,15 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String mame, String author, BigDecimal price, Integer sales, Integer stock, String imgPath) {
+    public Book(Integer id, String name, String author, BigDecimal price, Integer sales, Integer stock, String imgPath) {
         this.id = id;
-        this.mame = mame;
+        this.name = name;
         this.author = author;
         this.price = price;
         this.sales = sales;
         this.stock = stock;
         //要求给定的图书封面图书路径不能为空
-        if (imgPath != null && !"".equals(imgPath)){
+        if (imgPath != null && !"".equals(imgPath)) {
             this.imgPath = imgPath;
         }
     }
@@ -35,8 +35,8 @@ public class Book {
         return id;
     }
 
-    public String getMame() {
-        return mame;
+    public String getName() {
+        return name;
     }
 
     public String getAuthor() {
@@ -63,8 +63,8 @@ public class Book {
         this.id = id;
     }
 
-    public void setMame(String mame) {
-        this.mame = mame;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setAuthor(String author) {
@@ -85,7 +85,7 @@ public class Book {
 
     public void setImgPath(String imgPath) {
         //要求给定的图书封面图书路径不能为空
-        if (imgPath != null && !"".equals(imgPath)){
+        if (imgPath != null && !"".equals(imgPath)) {
             this.imgPath = imgPath;
         }
         this.imgPath = imgPath;
@@ -95,7 +95,7 @@ public class Book {
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", mame='" + mame + '\'' +
+                ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 ", price=" + price +
                 ", sales=" + sales +

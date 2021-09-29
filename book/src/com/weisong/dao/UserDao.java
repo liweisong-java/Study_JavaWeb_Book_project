@@ -1,4 +1,4 @@
-package com.weisong.dao.impl;
+package com.weisong.dao;
 
 import com.weisong.pojo.User;
 

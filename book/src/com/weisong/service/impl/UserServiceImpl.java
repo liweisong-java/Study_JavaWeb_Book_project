@@ -1,6 +1,6 @@
 package com.weisong.service.impl;
 
-import com.weisong.dao.impl.UserDao;
+import com.weisong.dao.UserDao;
 import com.weisong.dao.impl.UserDaoImpl;
 import com.weisong.pojo.User;
 import com.weisong.service.UserService;

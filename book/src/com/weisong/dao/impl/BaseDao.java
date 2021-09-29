@@ -1,4 +1,4 @@
-package com.weisong.dao;
+package com.weisong.dao.impl;
 
 import com.weisong.utils.JdbcUtils;
 import org.apache.commons.dbutils.QueryRunner;

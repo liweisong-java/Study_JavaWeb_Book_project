@@ -1,7 +1,7 @@
 package com.weisong.dao.impl;
 
+import com.weisong.dao.UserDao;
 import com.weisong.pojo.User;
-import com.weisong.dao.BaseDao;
 
 /**
  * @author 李伟松
