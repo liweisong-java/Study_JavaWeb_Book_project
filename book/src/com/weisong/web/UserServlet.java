@@ -1,9 +1,12 @@
 package com.weisong.web;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.weisong.pojo.User;
 import com.weisong.service.UserService;
 import com.weisong.service.impl.UserServiceImpl;
 import com.weisong.test.UserServletTest;
+import com.weisong.utils.WebUtils;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -64,6 +68,8 @@ public class UserServlet extends BaseServlet {
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String code = req.getParameter("code");
+
+        User user = (User) WebUtils.copyParamToBean(req.getParameterMap(),new User());
 
         //2.检查验证码是否正确      ==写死，要求验证码为abcde
         if ("abcde".equalsIgnoreCase(code)){
