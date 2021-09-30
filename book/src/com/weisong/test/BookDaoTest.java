@@ -23,7 +23,7 @@ public class BookDaoTest {
 
     @Test
     public void deleteBookById() {
-
+        bookDao.deleteBookById(26);
     }
 
     @Test
