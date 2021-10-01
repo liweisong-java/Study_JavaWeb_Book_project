@@ -32,7 +32,12 @@ public class BookServlet extends BaseServlet{
     }
 
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        //1、获取请求的参数id，图书编程
+        int id = WebUtils.parseInt(req.getParameter("id"), 0);
+        //2、调用bookService.deleteBookById();删除图书
+        bookService.deleteBookById(id);
+        //3、重定向回图书列表管理页面
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
     }
 
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
