@@ -41,7 +41,12 @@ public class BookServlet extends BaseServlet{
     }
 
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        //1、获取请求的参数==封装成为BOOK对象
+        Book book = (Book) WebUtils.copyParamToBean(req.getParameterMap(), new Book());
+        //2、调用BookService.updateBook( book );修改图书
+        bookService.updateBook(book);
+        //3、重定向回图书列表管理页面
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
     }
 
     protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

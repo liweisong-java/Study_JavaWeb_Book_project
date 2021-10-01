@@ -31,7 +31,8 @@
 		
 		<div id="main">
 			<form action="manager/bookServlet" method="post">
-				<input type="hidden" name="action" value="add" />
+				<input type="hidden" name="action" value="${ empty param.id ? "add" : "update"}" />
+				<input type="hidden" name="id" value="${requestScope.book.id}" />
 				<table>
 					<tr>
 						<td>名称</td>
