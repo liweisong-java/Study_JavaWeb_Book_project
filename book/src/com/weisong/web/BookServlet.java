@@ -44,6 +44,17 @@ public class BookServlet extends BaseServlet{
 
     }
 
+    protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1、获取请求的参数图书编号
+        int id = WebUtils.parseInt(req.getParameter("id"), 0);
+        //2、调用bookService.queryBookById查询图书
+        Book book = bookService.queryBookById(id);
+        //3、保存到图书到Request
+        req.setAttribute("book", book);
+        //4、请求转发到pages/manager/book_edit.jsp页面
+        req.getRequestDispatcher("/pages/manager/book_edit.jsp").forward(req, resp);
+    }
+
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.通过BookService查询全部图书
         List<Book> books = bookService.queryBooks();
