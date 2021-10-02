@@ -8,7 +8,7 @@ import java.util.List;
  * @author 李伟松
  * @create 2021-10-02-14:47
  */
-public class Page {
+public class Page<T> {
 
     public static final Integer PAGE_SIZE = 4;
 
@@ -21,7 +21,25 @@ public class Page {
     //总记录数
     private Integer PageTotalCount;
     //当前页数据
-    private List<Book> items;
+    private List<T> items;
+    // 分页条的请求地址
+    private String url;
+
+    public List<T> getItems() {
+        return items;
+    }
+
+    public void setItems(List<T> items) {
+        this.items = items;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 
     public void setPageNo(Integer pageNo) {
         this.pageNo = pageNo;
@@ -39,20 +57,12 @@ public class Page {
         PageTotalCount = pageTotalCount;
     }
 
-    public void setItems(List<Book> items) {
-        this.items = items;
-    }
-
     public static Integer getPageSize() {
         return PAGE_SIZE;
     }
 
     public Integer getPageTotalCount() {
         return PageTotalCount;
-    }
-
-    public List<Book> getItems() {
-        return items;
     }
 
     public Integer getPageNo() {
@@ -71,6 +81,7 @@ public class Page {
                 ", pageSize=" + pageSize +
                 ", PageTotalCount=" + PageTotalCount +
                 ", items=" + items +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

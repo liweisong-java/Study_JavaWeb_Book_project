@@ -1,6 +1,7 @@
 package com.weisong.service;
 
 import com.weisong.pojo.Book;
+import com.weisong.pojo.Page;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface BookService {
     public Book queryBookById(Integer id);
 
     public List<Book> queryBooks();
+
+    Page<Book> page(int pageNo, int pageSize);
 }

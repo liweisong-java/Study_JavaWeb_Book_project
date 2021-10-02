@@ -1,9 +1,11 @@
 package com.weisong.test;
 
 import com.weisong.pojo.Book;
+import com.weisong.pojo.Page;
 import com.weisong.service.BookService;
 import com.weisong.service.impl.BookServiceImpl;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.math.BigDecimal;
 import java.util.FormatFlagsConversionMismatchException;
@@ -43,5 +45,10 @@ public class BookServiceTest {
         for (Book queryBook : bookService.queryBooks()){
             System.out.println(queryBook);
         }
+    }
+
+    @Test
+    public void page(){
+        System.out.println(bookService.page(1, Page.PAGE_SIZE));
     }
 }

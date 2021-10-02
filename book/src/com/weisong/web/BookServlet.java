@@ -1,6 +1,7 @@
 package com.weisong.web;
 
 import com.weisong.pojo.Book;
+import com.weisong.pojo.Page;
 import com.weisong.service.BookService;
 import com.weisong.service.impl.BookServiceImpl;
 import com.weisong.utils.WebUtils;
@@ -19,16 +20,23 @@ public class BookServlet extends BaseServlet{
 
     private BookService bookService = new BookServiceImpl();
 
-    protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //1、请求获取的参数==封装成为Book对象
-        Book book = (Book) WebUtils.copyParamToBean(req.getParameterMap(), new Book());
-
-        //2、调用BookService.addBook()保存图书
-        bookService.addBook(book);
-        //3、跳到图书列表页面
-//        req.getRequestDispatcher("/manager/bookServlet?action=list").forward(req, resp);
-
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+    /**
+     * 处理分页功能
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1、获取请求的参数pageNo 和 pageSize
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        //2、调用BookService.page(pageNo,pageSize):page对象
+        Page<Book> page = bookService.page(pageNo,pageSize);
+        //3、保存page对象到Request域中
+        req.setAttribute("page", page);
+        //4、请求转发到pages/manager/book_manager.jsp
+        req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req, resp);
     }
 
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
