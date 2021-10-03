@@ -86,8 +86,23 @@
                     <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageTotal}">末页</a>
                 </c:if>
 
-			共${ requestScope.page.pageTotal }页，${ requestScope.page.pageTotalCount }条记录 到第<input value="4" name="pn" id="pn_input"/>页
-			<input type="button" value="确定">
+			共${ requestScope.page.pageTotal }页，${ requestScope.page.pageTotalCount }条记录
+			到第<input value="${param.pageNo}" name="pn" id="pn_input"/>页
+			<input id="searchPageBtn" type="button" value="确定">
+
+				<script type="text/javascript">
+					$(function () {
+						//跳到指定页码
+						$("#searchPageBtn").click(function(){
+							var pageNo = $("#pn_input").val();
+
+							//javaScript语言提供了一个location地址栏对象
+							//他有一个属性叫href，它可以获取浏览器地址栏中的地址
+							//href属性可读可写
+							location.href = "http://localhost:8080/book/manager/bookServlet?action=page&pageNo=" + pageNo;
+						});
+					});
+				</script>
 		</div>
 	</div>
 
