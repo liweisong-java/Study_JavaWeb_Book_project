@@ -96,10 +96,12 @@
 						$("#searchPageBtn").click(function(){
 							var pageNo = $("#pn_input").val();
 
+							<%--var pageTotal = ${requestScope.page.pageTotal};--%>
+
 							//javaScript语言提供了一个location地址栏对象
 							//他有一个属性叫href，它可以获取浏览器地址栏中的地址
 							//href属性可读可写
-							location.href = "http://localhost:8080/book/manager/bookServlet?action=page&pageNo=" + pageNo;
+							location.href = "${pageScope.basePath}manager/bookServlet?action=page&pageNo=" + pageNo;
 						});
 					});
 				</script>
