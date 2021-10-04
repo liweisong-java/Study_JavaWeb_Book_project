@@ -106,8 +106,4 @@ public class BookServlet extends BaseServlet{
         //3、请求转发到/pages/manager/book_manager.jsp页面
         req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req,resp);
     }
-
-
-
-
 }
