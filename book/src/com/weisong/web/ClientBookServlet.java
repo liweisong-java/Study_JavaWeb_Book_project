@@ -59,7 +59,18 @@ public class ClientBookServlet extends BaseServlet{
         //2 调用BookService.page(pageNo，pageSize)：Page对象
         Page<Book> page = bookService.pageByPrice(pageNo,pageSize,min,max);
 
-        page.setUrl("client/bookServlet?action=pageByPrice");
+        StringBuilder sb = new StringBuilder("client/bookServlet?action=pageByPrice");
+        //如果有最小价格的参数，追加到分页条的地址参数中
+        if (req.getParameter("min") != null){
+            sb.append("&min=").append(req.getParameter("min"));
+        }
+        //如果有最大价格的参数，追加到分页条的地址参数中
+        if (req.getParameter("max") != null){
+            sb.append("&max=").append(req.getParameter("max"));
+        }
+
+
+        page.setUrl(sb.toString());
 
         //3 保存Page对象到Request域中
         req.setAttribute("page",page);
