@@ -52,7 +52,7 @@ public class BookServlet extends BaseServlet{
 //        2、调用BookService.addBook()保存图书
         bookService.addBook(book);
 //        3、跳到图书列表页面
-//                /manager/bookServlet?action=list
+//              /manager/bookServlet?action=list
 //        req.getRequestDispatcher("/manager/bookServlet?action=list").forward(req, resp);
 
         resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + pageNo);
